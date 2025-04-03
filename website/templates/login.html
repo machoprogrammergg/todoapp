@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} Login {% endblock %}
+
+{% block content %}
+
+
+
+<div class="container-fluid d-flex flex-column gap-4 align-items-center justify-content-center form-sizer v-90">
+    <h3 class="h3 p-4">Login</h3>
+    <form method="POST" class="form-group d-flex flex-column gap-4">
+        <div class="input-group">
+            <span class="input-group-text">
+                Email
+            </span>
+            <input type="email" class="form-control shadow-none" name="email" placeholder="Enter email">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-text">
+                Password
+            </span>
+            <input type="password" class="form-control shadow-none" name="password" placeholder="Enter password">
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <a href="/signup" class="p-4">Not a member? Sign Up</a>
+</div>
+
+{% endblock %}

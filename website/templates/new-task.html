@@ -1,0 +1,39 @@
+{% extends "base.html" %}  <!-- This extends the base layout, ensuring common structure like headers, footers, etc. -->
+
+{% block title %}Create New Task{% endblock %}  <!-- Sets the title of the page as "Create New Task" -->
+
+{% block content %}  <!-- Starts the content block that will be injected into the base template -->
+
+<!-- Container for the Back button -->
+<div class="container-fluid p-4">
+    <button class="btn btn-primary">
+        <!-- The "Back" button links to the homepage (root route) -->
+        <a class="nav-link" href="/">Back</a>
+    </button>
+</div>
+
+<!-- Main container for the New Task form -->
+<div class="container-fluid d-flex flex-column gap-4 align-items-center justify-content-center form-sizer mx-auto v-90">
+    <h3 class="p-4">New Task</h3>  <!-- Page heading displaying "New Task" -->
+
+    <!-- Form for creating a new task -->
+    <form method="POST" class="form-group d-flex flex-column gap-4">
+        
+        <!-- Title input field -->
+        <div class="input-group">
+            <span class="input-group-text">Title</span>  <!-- Label for the title field -->
+            <input type="text" class="form-control shadow-none" placeholder="Pack for vacation" name="title" id="title">  <!-- Input field for task title -->
+        </div>
+
+        <!-- Small note textarea -->
+        <div class="input-group note">
+            <span class="input-group-text">Small Note</span>  <!-- Label for the note field -->
+            <textarea class="form-control shadow-none" name="note" id="note" placeholder="Don't forget the slippers..."></textarea>  <!-- Textarea for task notes -->
+        </div>
+
+        <!-- Submit button for the form -->
+        <button class="btn btn-primary" type="submit">Add to my list</button>  <!-- Button to submit the form and add the task -->
+    </form>
+</div>
+
+{% endblock content %}  <!-- End of content block -->

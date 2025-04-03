@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %} Sign Up {% endblock %}
+
+
+{% block content %}
+
+<div class="container-fluid d-flex flex-column gap-4 align-items-center justify-content-center form-sizer mx-auto v-90">
+
+    <h3 class="h3 p-4">Sign Up</h3>
+    <form method="POST" class="form-group d-flex flex-column gap-3">
+        <div class="input-group">
+            <span class="input-group-text">Email</span>
+            <input type="email" class="form-control shadow-none" placeholder="someone@example.com" id="email" name="email">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-text">Username</span>
+            <input type="text" class="form-control shadow-none" placeholder="green_machine_007" id="nickname" name="username">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-text">Create Password</span>
+            <input type="password" class="form-control shadow-none" id="password" name="password">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-text">Confirm Password</span>
+            <input type="password" class="form-control shadow-none" id="con_password" name="con_password">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create My Account</button>
+
+    </form>
+    <a href="/login" class="p-4">Already a member? Login</a>
+</div>
+
+{% endblock %}

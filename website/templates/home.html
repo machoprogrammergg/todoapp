@@ -1,0 +1,83 @@
+{% extends "base.html" %}  <!-- Inherit from the base HTML template -->
+
+{% block title %} Home Page {% endblock %}  <!-- Set the title of the page to 'Home Page' -->
+
+{% block navText %}
+    <!-- Display user's email and name in the navigation, styled with a color -->
+    <span style="color: rgb(54, 130, 253)">
+        {{ user.email }}, {{ user.name }}
+    </span> 
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid d-flex justify-content-between p-5" id="greeting">
+    <!-- Display greeting message and task count -->
+    {% if user.task_count == 0 %}
+        <!-- If the user has no tasks, display this message -->
+        <h3 class="h3">No tasks due <i class="fa-solid fa-square-check" style="color: rgb(50,200,100)"></i></h3>
+    {% else %}
+        <!-- If the user has tasks, display the task count -->
+        <h3 class="h3">
+            {{ user.task_count }} Tasks
+        </h3>
+    {% endif %}
+
+    <!-- Button to create a new task -->
+    <button onclick="createNewTask()" class="btn btn-primary mh-80" style="word-spacing: .5em;">
+        <i class="fa-solid fa-plus"></i> New
+    </button>
+</div>
+
+<!-- Display task list -->
+<div class="container-fluid">
+    <ul class="list-group p-3">
+        <!-- Loop through all the tasks of the current user -->
+        {% for task in user.tasks %}
+        <div class="container border-bottom">
+            <!-- Task container -->
+            <div class="list-item d-flex justify-content-between align-items-center p-4">
+
+                {% if task.completed == False %}
+                    <!-- If the task is not completed, display it as "Pending" -->
+                    <div class="container-fluid w-auto m-0 text-left" id="title_note">
+                        <h6 class="h6">{{ task.title }}</h6>  <!-- Display task title -->
+                        <p class="text-muted">{{ task.note }}</p>  <!-- Display task note -->
+                        <span class="badge text-bg-secondary p-2 fw-normal" id="statusBadge">Pending</span>  <!-- Badge to show task status -->
+                    </div>
+
+                    <!-- Buttons to delete or mark the task as done -->
+                    <span class="d-flex gap-4 justify-content-center align-items-center w-auto" id="button_date">
+                        <p class="text-muted m-0">{{ task.time_stamp }}</p>  <!-- Display task timestamp -->
+                        <button id="deleteBtn" type="button" class="btn btn-danger" onclick="deleteTask({{ task.id }})">
+                            Delete <i class="fa-solid fa-trash"></i>
+                        </button>
+                        <button id="markAsDone" type="button" class="btn btn-primary" onclick="markAsDone({{ task.id }})">
+                            Done <i class="fa-solid fa-circle-check"></i>
+                        </button>
+                    </span>
+
+                {% else %}
+                    <!-- If the task is completed, display it as "Completed" -->
+                    <div class="container-fluid w-auto m-0 text-left" id="title_note">
+                        <h6 class="h6">{{ task.title }}</h6>  <!-- Display task title -->
+                        <p class="p text-muted">{{ task.note }}</p>  <!-- Display task note -->
+                        <span class="badge text-bg-success p-2 fw-normal" id="statusBadge">Completed</span>  <!-- Badge to show task status -->
+                    </div>
+
+                    <!-- Buttons to delete the task (no mark-as-done button for completed tasks) -->
+                    <span class="d-flex gap-4 justify-content-center align-items-center w-auto" id="button_date">
+                        <p class="text-muted m-0">{{ task.time_stamp }}</p>  <!-- Display task timestamp -->
+                        <button id="deleteBtn" type="button" class="btn btn-danger" onclick="deleteTask({{ task.id }})">
+                            Delete <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </span>
+
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

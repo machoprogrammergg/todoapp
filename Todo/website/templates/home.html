@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %} Home Page {% endblock %}
+
+
+{% block navText %}<span style="color: rgb(54, 130, 253)">
+    {{ user.email }}, {{ user.name }}</span> {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid d-flex justify-content-between p-5" id="greeting">
+    
+        {% if user.task_count == 0 %}
+        <h3 class="h3">No tasks due <i class="fa-solid fa-square-check" style="color: rgb(50,200,100)"></i></h3>
+        {% else %}
+        <h3 class="h3">
+        {{ user.task_count }} Tasks
+        </h3>
+        {% endif %}
+
+            <button onclick="createNewTask()" class="btn btn-primary mh-80" style="word-spacing: .5em;"><i class="fa-solid fa-plus"></i> New</button>
+</div>
+
+<div class="container-fluid">
+    <ul class="list-group p-3">
+        {% for task in user.tasks %}
+        <div class="container border-bottom">
+            <div class="list-item d-flex justify-content-between align-items-center p-4">
+
+                {% if task.completed == False %}
+                <div class="container-fluid w-auto m-0 text-left" id="title_note">
+                    <h6 class="h6">{{ task.title }}</h6>
+                    <p class="p text-muted">{{ task.note }}</p>
+                    <span class="badge text-bg-secondary p-2" id="statusBadge">Pending</span>
+                </div>
+
+
+                <span class="d-flex gap-4 justify-content-center align-items-center w-auto" id="button_date">
+                    <p class="text-muted m-0">{{ task.time_stamp }}</p>
+                    <button id="deleteBtn" type="button" class="btn btn-danger" onclick="deleteTask({{ task.id }})">
+                            Delete <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <button id="markAsDone" type="button" class="btn btn-primary" onclick="markAsDone({{ task.id }})">
+                            Done <i class="fa-solid fa-circle-check"></i>
+                    </button>
+                </span>
+
+                {% else %}
+
+                <div class="container-fluid w-auto m-0 text-left" id="title_note">
+                    <h6 class="h6">{{ task.title }}</h6>
+                    <p class="p text-muted">{{ task.note }}</p>
+                    <span class="badge text-bg-success p-2" id="statusBadge">Completed</span>
+                </div>
+
+
+                <span class="d-flex gap-4 justify-content-center align-items-center w-auto" id="button_date">
+                    <p class="text-muted m-0">{{ task.time_stamp }}</p>
+                    <button id="deleteBtn" type="button" class="btn btn-danger" onclick="deleteTask({{ task.id }})">
+                            Delete <i class="fa-solid fa-trash"></i>
+                    </button>
+                </span>
+
+
+
+
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
