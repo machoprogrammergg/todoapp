@@ -4,8 +4,10 @@ from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 import secrets
+from waitress import serve
 
-app = Flask(__name__)
+
+
 
 # Initialize SQLAlchemy and set the database file name
 db = SQLAlchemy()
@@ -13,6 +15,7 @@ DB_NAME = 'database.db'
 
 # Function to create and configure the Flask application
 def create_app():
+    app = Flask(__name__)
     app.config['SECRET_KEY'] =  secrets.token_hex(16)  # Set a secret key for session management
     app.config['SQLALCHEMY_DATABASE_URI'] = F'sqlite:///{DB_NAME}'  # Set the URI for the SQLite database
 
@@ -41,6 +44,7 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')  # Register the views blueprint at the root URL
     app.register_blueprint(auth, url_prefix='/')  # Register the auth blueprint at the root URL
 
+    serve(app)
     return app  # Return the configured app
 
 # Function to create the database if it does not exist
