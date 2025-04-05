@@ -4,7 +4,6 @@ from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from os import path
 import secrets
-from waitress import serve
 
 
 
@@ -44,7 +43,6 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')  # Register the views blueprint at the root URL
     app.register_blueprint(auth, url_prefix='/')  # Register the auth blueprint at the root URL
 
-    serve(app)
     return app  # Return the configured app
 
 # Function to create the database if it does not exist
