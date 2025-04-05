@@ -6,5 +6,5 @@ app = create_app()
 
 # If the script is run directly (not imported as a module)
 if __name__ == '__main__':
-    # Run the Flask application with debug mode enabled and on port 8080
-    app.run(debug=False, port=0000)
+    # Run the Flask application
+    app.run()
