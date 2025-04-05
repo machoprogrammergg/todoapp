@@ -5,13 +5,14 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 import secrets
 
+app = Flask(__name__)
+
 # Initialize SQLAlchemy and set the database file name
 db = SQLAlchemy()
 DB_NAME = 'database.db'
 
 # Function to create and configure the Flask application
 def create_app():
-    app = Flask(__name__)  # Initialize the Flask app
     app.config['SECRET_KEY'] =  secrets.token_hex(16)  # Set a secret key for session management
     app.config['SQLALCHEMY_DATABASE_URI'] = F'sqlite:///{DB_NAME}'  # Set the URI for the SQLite database
 
