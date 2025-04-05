@@ -9,4 +9,4 @@ wsig_app = app
 if __name__ == '__main__':
     # Run the Flask application
     create_app()
-    serve(wsgi_app, host='0.0.0.0', url_prefix="/login")
+    serve(wsgi_app)
