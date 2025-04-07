@@ -1,9 +1,12 @@
 * {
     font-family: 'IBM Plex Sans', sans-serif;
+    margin: 0 !important;
 }
 
 nav {
     background-color: #FC7753 !important;
+    position: relative;
+    top: 0;
 }
 
 .navbar-toggler.collapse:focus {
@@ -27,6 +30,7 @@ nav {
 .btn.btn-default {
     background-color: #F2EFEA;
     color: #FC7753;
+    width: 100%;
 }
 
 .btn.btn-default:hover {
@@ -36,12 +40,12 @@ nav {
 .btn.btn-primary:hover {
     background-color: #F2EFEA;
     color: #FC7753;
+    width: auto;
 }
 
 .task-container {
     display: grid;
-    width: 100%;
-    grid-template-columns: 50% 30% 20%;
+    grid-template-columns: 40% 40% 20%;
     align-items: center;
 }
 body {
@@ -93,16 +97,21 @@ textarea {
         justify-content: center;
     }
 
-    #title_note {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-    }
-
     #button_date {
         width: 100% !important;
         display: flex !important;
         justify-content: space-around !important;
+    }
+
+    .task-container {
+        display: grid;
+        gap: 1em;
+        grid-template-columns: 1fr;
+    }
+    
+    #title_note {
+        align-items: center !important;
+        text-align: center;
     }
 
 

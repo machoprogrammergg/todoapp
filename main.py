@@ -7,4 +7,5 @@ from website import create_app
 # If the script is run directly (not imported as a module)
 if __name__ == '__main__':
     # Run the Flask application
-    serve(create_app(), host='0.0.0.0', port=8080)
+    # create_app().run(debug=True) --> Is for debugging purposes
+    serve(create_app(), host='0.0.0.0', port=8080) # For deployment

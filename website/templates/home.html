@@ -17,7 +17,7 @@
     {% endif %}
 
     <!-- Button to create a new task -->
-    <button onclick="createNewTask()" class="btn btn-primary mh-80" style="word-spacing: .5em;">
+    <button onclick="createNewTask()" class="btn btn-primary" style="word-spacing: .5em; width: 20%;">
         <i class="fa-solid fa-plus"></i> New
     </button>
 </div>
@@ -27,13 +27,13 @@
     <ul class="list-group p-3">
         <!-- Loop through all the tasks of the current user -->
         {% for task in user.tasks %}
-        <div class="container border-bottom">
+        <div class="container border-bottom" style="min-width: 100%;">
             <!-- Task container -->
             <div class="task-container container-fluid p-4">
 
                 {% if task.completed == False %}
                 <!-- If the task is not completed, display it as "Pending" -->
-                <div class="container-fluid w-auto m-0 text-left" id="title_note">
+                <div class="container-fluid w-auto m-0 text-left d-flex flex-column align-items-start gap-3" id="title_note">
                     <h6 class="h6">{{ task.title }}</h6> <!-- Display task title -->
                     <p class="text-muted">{{ task.note }}</p> <!-- Display task note -->
                     <span class="badge text-bg-secondary p-2 fw-normal w-50" id="statusBadge">Pending</span>
@@ -45,7 +45,7 @@
                 </span>
 
                 <!-- Buttons to delete or mark the task as done -->
-                <span class="d-flex justify-content-center align-items-center justify-content-around" id="button_date">
+                <span class="d-flex justify-content-center align-items-center justify-content-around gap-1" id="button_date">
 
                     <button id="deleteBtn" type="button" class="btn btn-default" onclick="deleteTask({{ task.id }})">
                         <i class="fa-solid fa-trash"></i>
@@ -57,14 +57,14 @@
 
                 {% else %}
                 <!-- If the task is completed, display it as "Completed" -->
-                <div class="container-fluid w-auto m-0 text-left" id="title_note">
+                <div class="container-fluid text-left d-flex flex-column align-items-start gap-3" id="title_note">
                     <h6 class="h6">{{ task.title }}</h6> <!-- Display task title -->
                     <p class="p text-muted">{{ task.note }}</p> <!-- Display task note -->
-                    <span class="badge text-bg-success p-2 fw-normal" id="statusBadge">Completed</span>
+                    <span class="badge text-bg-success p-2 fw-normal w-50" id="statusBadge">Completed</span>
                     <!-- Badge to show task status -->
                 </div>
 
-                <span class="container-fluid">
+                <span class="container-fluid text-center">
                     <p class="text-muted m-0">{{ task.time_stamp }}</p> <!-- Display task timestamp -->
                 </span>
 
