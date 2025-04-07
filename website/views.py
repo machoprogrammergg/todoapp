@@ -22,7 +22,7 @@ def newTask():
         
         # Generate current timestamp for the task
         current_time = time.datetime.now()
-        stamp = f'{current_time.strftime("%A, %d %B")} {current_time.strftime("%H:%M")}'  # Format the date and time
+        stamp = f'{current_time.strftime("%A, %d %B")}'  # Format the date
 
         # Validate the task title
         if len(new_title) < 4:
